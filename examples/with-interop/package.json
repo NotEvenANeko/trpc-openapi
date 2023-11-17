@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@notevenaneko/trpc-openapi": "workspace:^",
     "@trpc/server": "^10.27.1",
     "zod": "^3.21.4"
   },

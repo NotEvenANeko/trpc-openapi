@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
     "target": "ES2017",
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "strict": true,
     "declaration": true,
     "declarationMap": true,
@@ -10,10 +10,9 @@
     "skipLibCheck": true,
     "allowJs": true,
     "checkJs": false,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
     "removeComments": false,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src", "test"]
+  "include": ["src", "test", "tsup.config.ts"]
 }

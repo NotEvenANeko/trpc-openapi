@@ -1,8 +1,8 @@
 {
-  "name": "trpc-openapi",
+  "name": "@notevenaneko/trpc-openapi",
   "version": "1.2.0",
   "description": "tRPC OpenAPI",
-  "author": "James Berry <jb@jamesbe.com>",
+  "author": "James Berry <jb@jamesbe.com>, Neko <neko@qwq.icu>",
   "private": false,
   "license": "MIT",
   "keywords": [
@@ -10,11 +10,24 @@
     "openapi",
     "swagger"
   ],
-  "homepage": "https://github.com/jlalmes/trpc-openapi",
-  "repository": "github:jlalmes/trpc-openapi",
-  "bugs": "https://github.com/jlalmes/trpc-openapi/issues",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "homepage": "https://github.com/NotEvenANeko/trpc-openapi",
+  "repository": "github:notevenaneko/trpc-openapi",
+  "bugs": "https://github.com/NotEvenANeko/trpc-openapi/issues",
+  "packageManager": "pnpm@8.10.2",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
   "workspaces": [
     ".",
     "examples/with-nextjs",
@@ -26,7 +39,8 @@
   ],
   "scripts": {
     "test": "tsc --noEmit && jest --verbose",
-    "build": "rimraf dist && tsc -p tsconfig.build.json"
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "@trpc/server": "^10.0.0",
@@ -41,6 +55,7 @@
     "zod-to-json-schema": "^3.21.1"
   },
   "devDependencies": {
+    "@swc/jest": "^0.2.29",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@trpc/client": "^10.27.1",
     "@types/aws-lambda": "^8.10.115",
@@ -65,10 +80,8 @@
     "node-fetch": "^2.6.11",
     "openapi-schema-validator": "^12.1.1",
     "prettier": "^2.8.8",
-    "rimraf": "^5.0.1",
     "superjson": "^1.12.3",
-    "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.1",
+    "tsup": "^7.3.0",
     "typescript": "^5.0.4"
   }
 }
