@@ -1,15 +1,6 @@
-![trpc-openapi](assets/trpc-openapi-readme.png)
+# @notevenaneko/trpc-openapi
 
-<div align="center">
-  <h1>trpc-openapi</h1>
-  <a href="https://www.npmjs.com/package/trpc-openapi"><img src="https://img.shields.io/npm/v/trpc-openapi.svg?style=flat&color=brightgreen" target="_blank" /></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-black" /></a>
-  <a href="https://trpc.io/discord" target="_blank"><img src="https://img.shields.io/badge/chat-discord-blue.svg" /></a>
-  <br />
-  <hr />
-</div>
-
-#### `trpc-openapi` is maintained by ProsePilot - simple, fast and free online [writing tools](https://www.prosepilot.com/tools).
+This is a fork of original [`trpc-openapi`](https://github.com/jlalmes/trpc-openapi), which provides ESM format package, implements some PRs from original repo and fixes that types import from `@trpc/server/dist` instead of `exports` field of `package.json`.
 
 ---
 
@@ -21,20 +12,20 @@
 
 ## Usage
 
-**1. Install `trpc-openapi`.**
+**1. Install `@notevenaneko/trpc-openapi`.**
 
 ```bash
 # npm
-npm install trpc-openapi
+npm install @notevenaneko/trpc-openapi
 # yarn
-yarn add trpc-openapi
+yarn add @notevenaneko/trpc-openapi
 ```
 
 **2. Add `OpenApiMeta` to your tRPC instance.**
 
 ```typescript
 import { initTRPC } from '@trpc/server';
-import { OpenApiMeta } from 'trpc-openapi';
+import { OpenApiMeta } from '@notevenaneko/trpc-openapi';
 
 const t = initTRPC.meta<OpenApiMeta>().create(); /* 👈 */
 ```
@@ -56,7 +47,7 @@ export const appRouter = t.router({
 **4. Generate an OpenAPI document.**
 
 ```typescript
-import { generateOpenApiDocument } from 'trpc-openapi';
+import { generateOpenApiDocument } from '@notevenaneko/trpc-openapi';
 
 import { appRouter } from '../appRouter';
 
@@ -68,7 +59,7 @@ export const openApiDocument = generateOpenApiDocument(appRouter, {
 });
 ```
 
-**5. Add an `trpc-openapi` handler to your app.**
+**5. Add an `@notevenaneko/trpc-openapi` handler to your app.**
 
 We currently support adapters for [`Express`](http://expressjs.com/), [`Next.js`](https://nextjs.org/), [`Serverless`](https://www.serverless.com/), [`Fastify`](https://www.fastify.io/), [`Nuxt`](https://nuxtjs.org/) & [`Node:HTTP`](https://nodejs.org/api/http.html).
 
@@ -76,7 +67,7 @@ We currently support adapters for [`Express`](http://expressjs.com/), [`Next.js`
 
 ```typescript
 import http from 'http';
-import { createOpenApiHttpHandler } from 'trpc-openapi';
+import { createOpenApiHttpHandler } from '@notevenaneko/trpc-openapi';
 
 import { appRouter } from '../appRouter';
 
@@ -191,7 +182,7 @@ Explore a [complete example here](examples/with-nextjs/src/server/router.ts).
 
 ```typescript
 import { TRPCError, initTRPC } from '@trpc/server';
-import { OpenApiMeta } from 'trpc-openapi';
+import { OpenApiMeta } from '@notevenaneko/trpc-openapi';
 
 type User = { id: string; name: string };
 
@@ -250,7 +241,7 @@ Please see [full example here](examples/with-express).
 ```typescript
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express from 'express';
-import { createOpenApiExpressMiddleware } from 'trpc-openapi';
+import { createOpenApiExpressMiddleware } from '@notevenaneko/trpc-openapi';
 
 import { appRouter } from '../appRouter';
 
@@ -268,7 +259,7 @@ Please see [full example here](examples/with-nextjs).
 
 ```typescript
 // pages/api/[...trpc].ts
-import { createOpenApiNextHandler } from 'trpc-openapi';
+import { createOpenApiNextHandler } from '@notevenaneko/trpc-openapi';
 
 import { appRouter } from '../../server/appRouter';
 
@@ -280,7 +271,7 @@ export default createOpenApiNextHandler({ router: appRouter });
 Please see [full example here](examples/with-serverless).
 
 ```typescript
-import { createOpenApiAwsLambdaHandler } from 'trpc-openapi';
+import { createOpenApiAwsLambdaHandler } from '@notevenaneko/trpc-openapi';
 
 import { appRouter } from './appRouter';
 
@@ -294,7 +285,7 @@ Please see [full example here](examples/with-fastify).
 ```typescript
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import Fastify from 'fastify';
-import { fastifyTRPCOpenApiPlugin } from 'trpc-openapi';
+import { fastifyTRPCOpenApiPlugin } from '@notevenaneko/trpc-openapi';
 
 import { appRouter } from './router';
 
