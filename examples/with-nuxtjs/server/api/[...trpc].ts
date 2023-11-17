@@ -1,4 +1,4 @@
-import { createOpenApiNuxtHandler } from 'trpc-openapi';
+import { createOpenApiNuxtHandler } from '@notevenaneko/trpc-openapi';
 
 import { appRouter, createContext } from '../router';
 

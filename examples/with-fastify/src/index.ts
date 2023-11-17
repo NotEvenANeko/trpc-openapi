@@ -1,4 +1,4 @@
-/* 
+/*
   eslint-disable
   @typescript-eslint/no-misused-promises,
   @typescript-eslint/no-unsafe-argument,
@@ -7,9 +7,10 @@
  */
 import cors from '@fastify/cors';
 import fastifySwagger from '@fastify/swagger';
+import fastifySwaggerUI from '@fastify/swagger-ui';
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import Fastify from 'fastify';
-import { fastifyTRPCOpenApiPlugin } from 'trpc-openapi';
+import { fastifyTRPCOpenApiPlugin } from '@notevenaneko/trpc-openapi';
 
 import { openApiDocument } from './openapi';
 import { appRouter, createContext } from './router';
@@ -39,18 +40,21 @@ async function main() {
 
   // Server Swagger UI
   await app.register(fastifySwagger, {
-    routePrefix: '/docs',
+    prefix: '/docs',
     mode: 'static',
     specification: { document: openApiDocument },
+  });
+
+  await app.register(fastifySwaggerUI, {
+    routePrefix: '/documentation',
     uiConfig: { displayOperationId: true },
-    exposeRoute: true,
   });
 
   await app
     .listen({ port: 3000 })
     .then((address) => {
       app.swagger();
-      console.log(`Server started on ${address}\nSwagger UI: http://localhost:3000/docs`);
+      console.log(`Server started on ${address}\nSwagger UI: http://localhost:3000/documentation`);
     })
     .catch((e) => {
       throw e;

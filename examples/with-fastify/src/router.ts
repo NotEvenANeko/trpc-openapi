@@ -3,7 +3,7 @@ import { TRPCError, initTRPC } from '@trpc/server';
 import { CreateFastifyContextOptions } from '@trpc/server/adapters/fastify';
 import { type FastifyReply, type FastifyRequest } from 'fastify';
 import jwt from 'jsonwebtoken';
-import { OpenApiMeta } from 'trpc-openapi';
+import { OpenApiMeta } from '@notevenaneko/trpc-openapi';
 import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
 

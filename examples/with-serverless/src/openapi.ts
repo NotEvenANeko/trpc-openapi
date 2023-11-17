@@ -1,4 +1,4 @@
-import { generateOpenApiDocument } from 'trpc-openapi';
+import { generateOpenApiDocument } from '@notevenaneko/trpc-openapi';
 
 import { appRouter } from './router';
 

@@ -1,7 +1,7 @@
 import { TRPCError, initTRPC } from '@trpc/server';
 import { CreateNextContextOptions } from '@trpc/server/adapters/next';
 import jwt from 'jsonwebtoken';
-import { OpenApiMeta } from 'trpc-openapi';
+import { OpenApiMeta } from '@notevenaneko/trpc-openapi';
 import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
 

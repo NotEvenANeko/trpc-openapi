@@ -1,5 +1,5 @@
 import * as trpc from '@trpc/server';
-import { OpenApiMeta } from 'trpc-openapi';
+import { OpenApiMeta } from '@notevenaneko/trpc-openapi';
 import { z } from 'zod';
 
 const appRouter = trpc.router<any, OpenApiMeta>().query('echo', {
