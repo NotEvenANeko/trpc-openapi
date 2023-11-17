@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
+          registry-url: https://registry.npmjs.org
 
       - name: Get pnpm store directory
         id: pnpm-cache
