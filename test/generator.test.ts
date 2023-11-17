@@ -4,8 +4,8 @@ import openAPISchemaValidator from 'openapi-schema-validator';
 import { z } from 'zod';
 
 import {
-  GenerateOpenApiDocumentOptions,
-  OpenApiMeta,
+  type GenerateOpenApiDocumentOptions,
+  type OpenApiMeta,
   generateOpenApiDocument,
   openApiVersion,
 } from '../src';
@@ -226,9 +226,7 @@ describe('generator', () => {
   test('with object non-string input', () => {
     // only applies when zod does not support (below version v3.20.0)
 
-    // @ts-expect-error - hack to disable zodSupportsCoerce
-    // eslint-disable-next-line import/namespace
-    zodUtils.zodSupportsCoerce = false;
+    zodUtils.zodFeatures.zodSupportsCoerce = false;
 
     {
       const appRouter = t.router({
@@ -280,10 +278,7 @@ describe('generator', () => {
         }
       `);
     }
-
-    // @ts-expect-error - hack to re-enable zodSupportsCoerce
-    // eslint-disable-next-line import/namespace
-    zodUtils.zodSupportsCoerce = true;
+    zodUtils.zodFeatures.zodSupportsCoerce = true;
   });
 
   test('with bad method', () => {
@@ -2807,26 +2802,26 @@ describe('generator', () => {
             method: 'GET',
             path: '/query-example/{name}',
             responseHeaders: {
-              "X-RateLimit-Limit": {
-                description: "Request limit per hour.",
+              'X-RateLimit-Limit': {
+                description: 'Request limit per hour.',
                 schema: {
-                  type: "integer"
-                }
+                  type: 'integer',
+                },
               },
-              "X-RateLimit-Remaining": {
-                description: "The number of requests left for the time window.",
+              'X-RateLimit-Remaining': {
+                description: 'The number of requests left for the time window.',
                 schema: {
-                  type: "integer"
-                }
-              }
-            }
+                  type: 'integer',
+                },
+              },
+            },
           },
         })
         .input(z.object({ name: z.string(), greeting: z.string() }))
         .output(z.object({ output: z.string() }))
         .query(({ input }) => ({
           output: `${input.greeting} ${input.name}`,
-        }))
+        })),
     });
 
     const openApiDocument = generateOpenApiDocument(appRouter, defaultDocOpts);

@@ -1,10 +1,10 @@
 import { TRPCError } from '@trpc/server';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { OpenApiErrorResponse, OpenApiRouter } from '../types';
+import type { OpenApiErrorResponse, OpenApiRouter } from '../types';
 import { normalizePath } from '../utils/path';
 import {
-  CreateOpenApiNodeHttpHandlerOptions,
+  type CreateOpenApiNodeHttpHandlerOptions,
   createOpenApiNodeHttpHandler,
 } from './node-http/core';
 

@@ -1,8 +1,8 @@
 import { IncomingMessage, ServerResponse } from 'http';
 
-import { OpenApiRouter } from '../types';
+import type { OpenApiRouter } from '../types';
 import {
-  CreateOpenApiNodeHttpHandlerOptions,
+  type CreateOpenApiNodeHttpHandlerOptions,
   createOpenApiNodeHttpHandler,
 } from './node-http/core';
 

@@ -1,12 +1,12 @@
-import { inferAsyncReturnType, initTRPC } from '@trpc/server';
+import { type inferAsyncReturnType, initTRPC } from '@trpc/server';
 import {
-  CreateAWSLambdaContextOptions,
+  type CreateAWSLambdaContextOptions,
   UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE,
 } from '@trpc/server/adapters/aws-lambda';
-import { APIGatewayProxyEvent, APIGatewayProxyEventV2 } from 'aws-lambda';
+import type { APIGatewayProxyEvent, APIGatewayProxyEventV2 } from 'aws-lambda';
 import z from 'zod';
 
-import { OpenApiMeta, createOpenApiAwsLambdaHandler } from '../../src';
+import { type OpenApiMeta, createOpenApiAwsLambdaHandler } from '../../src';
 import {
   mockAPIGatewayContext,
   mockAPIGatewayProxyEventV1,

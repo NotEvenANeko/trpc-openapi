@@ -1,4 +1,4 @@
-import { OpenApiMethod, OpenApiProcedure, OpenApiRouter } from '../../types';
+import type { OpenApiMethod, OpenApiProcedure, OpenApiRouter } from '../../types';
 import { getPathRegExp, normalizePath } from '../../utils/path';
 import { forEachOpenApiProcedure } from '../../utils/procedure';
 

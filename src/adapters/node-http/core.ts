@@ -1,14 +1,14 @@
-import { AnyProcedure, TRPCError } from '@trpc/server';
-import {
+import { type AnyProcedure, TRPCError } from '@trpc/server';
+import type {
   NodeHTTPHandlerOptions,
   NodeHTTPRequest,
   NodeHTTPResponse,
-} from '@trpc/server/dist/adapters/node-http';
+} from '@trpc/server/adapters/node-http';
 import cloneDeep from 'lodash.clonedeep';
 import { ZodError, z } from 'zod';
 
 import { generateOpenApiDocument } from '../../generator';
-import {
+import type {
   OpenApiErrorResponse,
   OpenApiMethod,
   OpenApiResponse,
@@ -23,7 +23,7 @@ import {
   instanceofZodTypeLikeVoid,
   instanceofZodTypeObject,
   unwrapZodType,
-  zodSupportsCoerce,
+  zodFeatures,
 } from '../../utils/zod';
 import { TRPC_ERROR_CODE_HTTP_STATUS, getErrorFromUnknown } from './errors';
 import { getBody, getQuery } from './input';
@@ -114,7 +114,7 @@ export const createOpenApiNodeHttpHandler = <
       }
 
       // if supported, coerce all string values to correct types
-      if (zodSupportsCoerce) {
+      if (zodFeatures.zodSupportsCoerce) {
         if (instanceofZodTypeObject(unwrappedSchema)) {
           Object.values(unwrappedSchema.shape).forEach((shapeSchema) => {
             const unwrappedShapeSchema = unwrapZodType(shapeSchema, false);

@@ -4,9 +4,9 @@ import fetch from 'node-fetch';
 import { z } from 'zod';
 
 import {
-  CreateOpenApiFastifyPluginOptions,
-  OpenApiMeta,
-  OpenApiRouter,
+  type CreateOpenApiFastifyPluginOptions,
+  type OpenApiMeta,
+  type OpenApiRouter,
   fastifyTRPCOpenApiPlugin,
 } from '../../src';
 

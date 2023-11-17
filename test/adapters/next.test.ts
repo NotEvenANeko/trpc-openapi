@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { initTRPC } from '@trpc/server';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
 
 import {
-  CreateOpenApiNextHandlerOptions,
-  OpenApiMeta,
-  OpenApiResponse,
-  OpenApiRouter,
+  type CreateOpenApiNextHandlerOptions,
+  type OpenApiMeta,
+  type OpenApiResponse,
+  type OpenApiRouter,
   createOpenApiNextHandler,
 } from '../../src';
 

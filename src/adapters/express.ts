@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 
-import { OpenApiRouter } from '../types';
+import type { OpenApiRouter } from '../types';
 import {
-  CreateOpenApiNodeHttpHandlerOptions,
+  type CreateOpenApiNodeHttpHandlerOptions,
   createOpenApiNodeHttpHandler,
 } from './node-http/core';
 

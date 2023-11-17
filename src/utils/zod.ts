@@ -7,7 +7,7 @@ export const instanceofZodType = (type: any): type is z.ZodTypeAny => {
 export const instanceofZodTypeKind = <Z extends z.ZodFirstPartyTypeKind>(
   type: z.ZodTypeAny,
   zodTypeKind: Z,
-): type is InstanceType<typeof z[Z]> => {
+): type is InstanceType<(typeof z)[Z]> => {
   return type?._def?.typeName === zodTypeKind;
 };
 
@@ -100,7 +100,9 @@ export const instanceofZodTypeLikeString = (_type: z.ZodTypeAny): _type is ZodTy
   return instanceofZodTypeKind(type, z.ZodFirstPartyTypeKind.ZodString);
 };
 
-export const zodSupportsCoerce = 'coerce' in z;
+export const zodFeatures = {
+  zodSupportsCoerce: 'coerce' in z,
+};
 
 export type ZodTypeCoercible = z.ZodNumber | z.ZodBoolean | z.ZodBigInt | z.ZodDate;
 

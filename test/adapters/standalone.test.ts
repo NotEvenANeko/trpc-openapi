@@ -8,10 +8,10 @@ import superjson from 'superjson';
 import { z } from 'zod';
 
 import {
-  CreateOpenApiHttpHandlerOptions,
-  OpenApiErrorResponse,
-  OpenApiMeta,
-  OpenApiRouter,
+  type CreateOpenApiHttpHandlerOptions,
+  type OpenApiErrorResponse,
+  type OpenApiMeta,
+  type OpenApiRouter,
   createOpenApiHttpHandler,
 } from '../../src';
 import * as zodUtils from '../../src/utils/zod';
@@ -1191,9 +1191,7 @@ describe('standalone adapter', () => {
   test('with non-coerce preprocess', async () => {
     // only applies when zod does not support (below version v3.20.0)
 
-    // @ts-expect-error - hack to disable zodSupportsCoerce
-    // eslint-disable-next-line import/namespace
-    zodUtils.zodSupportsCoerce = false;
+    zodUtils.zodFeatures.zodSupportsCoerce = false;
     {
       const appRouter = t.router({
         plusOne: t.procedure
@@ -1225,9 +1223,8 @@ describe('standalone adapter', () => {
 
       close();
     }
-    // @ts-expect-error - hack to re-enable zodSupportsCoerce
-    // eslint-disable-next-line import/namespace
-    zodUtils.zodSupportsCoerce = true;
+
+    zodUtils.zodFeatures.zodSupportsCoerce = true;
   });
 
   test('with coerce', async () => {

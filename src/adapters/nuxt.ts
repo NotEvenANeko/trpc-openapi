@@ -3,10 +3,10 @@ import type { NodeIncomingMessage, NodeServerResponse } from 'h3';
 import { defineEventHandler, getQuery } from 'h3';
 import { IncomingMessage } from 'http';
 
-import { OpenApiErrorResponse, OpenApiRouter } from '../types';
+import type { OpenApiErrorResponse, OpenApiRouter } from '../types';
 import { normalizePath } from '../utils/path';
 import {
-  CreateOpenApiNodeHttpHandlerOptions,
+  type CreateOpenApiNodeHttpHandlerOptions,
   createOpenApiNodeHttpHandler,
 } from './node-http/core';
 

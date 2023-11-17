@@ -1,4 +1,4 @@
-import { OpenApiMethod } from '../types';
+import type { OpenApiMethod } from '../types';
 
 export const acceptsRequestBody = (method: OpenApiMethod) => {
   if (method === 'GET' || method === 'DELETE') {

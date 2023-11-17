@@ -1,8 +1,7 @@
-// eslint-disable-next-line import/no-unresolved
-import { ProcedureType } from '@trpc/server';
-import { AnyZodObject, z } from 'zod';
+import type { ProcedureType } from '@trpc/server';
+import { type AnyZodObject, z } from 'zod';
 
-import { OpenApiMeta, OpenApiProcedure, OpenApiProcedureRecord } from '../types';
+import type { OpenApiMeta, OpenApiProcedure, OpenApiProcedureRecord } from '../types';
 
 const mergeInputs = (inputParsers: AnyZodObject[]): AnyZodObject => {
   return inputParsers.reduce((acc, inputParser) => {
@@ -10,8 +9,47 @@ const mergeInputs = (inputParsers: AnyZodObject[]): AnyZodObject => {
   }, z.object({}));
 };
 
+export type ParserZodEsque<TInput, TParsedInput> = {
+  _input: TInput;
+  _output: TParsedInput;
+};
+
+export type ParserMyZodEsque<TInput> = {
+  parse: (input: any) => TInput;
+};
+
+export type ParserSuperstructEsque<TInput> = {
+  create: (input: unknown) => TInput;
+};
+
+export type ParserCustomValidatorEsque<TInput> = (input: unknown) => TInput | Promise<TInput>;
+
+export type ParserYupEsque<TInput> = {
+  validateSync: (input: unknown) => TInput;
+};
+
+export type ParserScaleEsque<TInput> = {
+  assert(value: unknown): asserts value is TInput;
+};
+
+export type ParserWithoutInput<TInput> =
+  | ParserYupEsque<TInput>
+  | ParserSuperstructEsque<TInput>
+  | ParserCustomValidatorEsque<TInput>
+  | ParserMyZodEsque<TInput>
+  | ParserScaleEsque<TInput>;
+
+export type ParserWithInputOutput<TInput, TParsedInput> = ParserZodEsque<TInput, TParsedInput>;
+
+export type Parser = ParserWithoutInput<any> | ParserWithInputOutput<any, any>;
+
 // `inputParser` & `outputParser` are private so this is a hack to access it
-export const getInputOutputParsers = (procedure: OpenApiProcedure) => {
+export const getInputOutputParsers = (
+  procedure: OpenApiProcedure,
+): {
+  inputParser: Parser | AnyZodObject | undefined;
+  outputParser: Parser | undefined;
+} => {
   const { inputs, output } = procedure._def;
   return {
     inputParser: inputs.length >= 2 ? mergeInputs(inputs as AnyZodObject[]) : inputs[0],

@@ -1,9 +1,9 @@
-import { AnyRouter } from '@trpc/server';
-import { FastifyInstance } from 'fastify';
+import type { AnyRouter } from '@trpc/server';
+import type { FastifyInstance } from 'fastify';
 
-import { OpenApiRouter } from '../types';
+import type { OpenApiRouter } from '../types';
 import {
-  CreateOpenApiNodeHttpHandlerOptions,
+  type CreateOpenApiNodeHttpHandlerOptions,
   createOpenApiNodeHttpHandler,
 } from './node-http/core';
 

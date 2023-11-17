@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { initTRPC } from '@trpc/server';
 import { H3Event } from 'h3';
-import httpMocks, { RequestMethod } from 'node-mocks-http';
+import httpMocks, { type RequestMethod } from 'node-mocks-http';
 import { z } from 'zod';
 
 import {
-  CreateOpenApiNuxtHandlerOptions,
-  OpenApiMeta,
-  OpenApiResponse,
-  OpenApiRouter,
+  type CreateOpenApiNuxtHandlerOptions,
+  type OpenApiMeta,
+  type OpenApiResponse,
+  type OpenApiRouter,
   createOpenApiNuxtHandler,
 } from '../../src';
 

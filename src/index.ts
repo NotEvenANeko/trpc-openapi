@@ -1,10 +1,10 @@
 import {
-  CreateOpenApiAwsLambdaHandlerOptions,
-  CreateOpenApiExpressMiddlewareOptions,
-  CreateOpenApiFastifyPluginOptions,
-  CreateOpenApiHttpHandlerOptions,
-  CreateOpenApiNextHandlerOptions,
-  CreateOpenApiNuxtHandlerOptions,
+  type CreateOpenApiAwsLambdaHandlerOptions,
+  type CreateOpenApiExpressMiddlewareOptions,
+  type CreateOpenApiFastifyPluginOptions,
+  type CreateOpenApiHttpHandlerOptions,
+  type CreateOpenApiNextHandlerOptions,
+  type CreateOpenApiNuxtHandlerOptions,
   createOpenApiAwsLambdaHandler,
   createOpenApiExpressMiddleware,
   createOpenApiHttpHandler,
@@ -13,11 +13,11 @@ import {
   fastifyTRPCOpenApiPlugin,
 } from './adapters';
 import {
-  GenerateOpenApiDocumentOptions,
+  type GenerateOpenApiDocumentOptions,
   generateOpenApiDocument,
   openApiVersion,
 } from './generator';
-import {
+import type {
   OpenApiErrorResponse,
   OpenApiMeta,
   OpenApiMethod,
@@ -25,15 +25,15 @@ import {
   OpenApiRouter,
   OpenApiSuccessResponse,
 } from './types';
-import { ZodTypeLikeString, ZodTypeLikeVoid } from './utils/zod';
+import type { ZodTypeLikeString, ZodTypeLikeVoid } from './utils/zod';
 
 export {
-  CreateOpenApiAwsLambdaHandlerOptions,
-  CreateOpenApiExpressMiddlewareOptions,
-  CreateOpenApiHttpHandlerOptions,
-  CreateOpenApiNextHandlerOptions,
-  CreateOpenApiFastifyPluginOptions,
-  CreateOpenApiNuxtHandlerOptions,
+  type CreateOpenApiAwsLambdaHandlerOptions,
+  type CreateOpenApiExpressMiddlewareOptions,
+  type CreateOpenApiHttpHandlerOptions,
+  type CreateOpenApiNextHandlerOptions,
+  type CreateOpenApiFastifyPluginOptions,
+  type CreateOpenApiNuxtHandlerOptions,
   createOpenApiExpressMiddleware,
   createOpenApiHttpHandler,
   createOpenApiNextHandler,
@@ -42,13 +42,13 @@ export {
   fastifyTRPCOpenApiPlugin,
   openApiVersion,
   generateOpenApiDocument,
-  GenerateOpenApiDocumentOptions,
-  OpenApiRouter,
-  OpenApiMeta,
-  OpenApiMethod,
-  OpenApiResponse,
-  OpenApiSuccessResponse,
-  OpenApiErrorResponse,
-  ZodTypeLikeString,
-  ZodTypeLikeVoid,
+  type GenerateOpenApiDocumentOptions,
+  type OpenApiRouter,
+  type OpenApiMeta,
+  type OpenApiMethod,
+  type OpenApiResponse,
+  type OpenApiSuccessResponse,
+  type OpenApiErrorResponse,
+  type ZodTypeLikeString,
+  type ZodTypeLikeVoid,
 };

@@ -1,9 +1,9 @@
 import { TRPCError } from '@trpc/server';
 import { OpenAPIV3 } from 'openapi-types';
 import { z } from 'zod';
-import zodToJsonSchema from 'zod-to-json-schema';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 
-import { OpenApiContentType } from '../types';
+import type { OpenApiContentType } from '../types';
 import {
   instanceofZodType,
   instanceofZodTypeCoercible,
@@ -12,7 +12,7 @@ import {
   instanceofZodTypeObject,
   instanceofZodTypeOptional,
   unwrapZodType,
-  zodSupportsCoerce,
+  zodFeatures,
 } from '../utils/zod';
 
 const zodSchemaToOpenApiSchemaObject = (zodSchema: z.ZodType): OpenAPIV3.SchemaObject => {
@@ -75,7 +75,7 @@ export const getParameterObjects = (
       const isPathParameter = pathParameters.includes(shapeKey);
 
       if (!instanceofZodTypeLikeString(shapeSchema)) {
-        if (zodSupportsCoerce) {
+        if (zodFeatures.zodSupportsCoerce) {
           if (!instanceofZodTypeCoercible(shapeSchema)) {
             throw new TRPCError({
               message: `Input parser key: "${shapeKey}" must be ZodString, ZodNumber, ZodBoolean, ZodBigInt or ZodDate`,
@@ -189,7 +189,7 @@ export const errorResponseObject: OpenAPIV3.ResponseObject = {
 export const getResponsesObject = (
   schema: unknown,
   example: Record<string, any> | undefined,
-  headers: Record<string, OpenAPIV3.HeaderObject | OpenAPIV3.ReferenceObject> | undefined
+  headers: Record<string, OpenAPIV3.HeaderObject | OpenAPIV3.ReferenceObject> | undefined,
 ): OpenAPIV3.ResponsesObject => {
   if (!instanceofZodType(schema)) {
     throw new TRPCError({

@@ -1,9 +1,44 @@
-import { Procedure, ProcedureParams, Router } from '@trpc/server';
-import type { RootConfig } from '@trpc/server/dist/core/internals/config';
-import { TRPC_ERROR_CODE_KEY } from '@trpc/server/rpc';
-import type { RouterDef } from '@trpc/server/src/core/router';
+import type {
+  Procedure,
+  ProcedureParams,
+  Router,
+  RootConfig,
+  AnyRootConfig,
+  ProcedureRouterRecord,
+} from '@trpc/server';
+import type { TRPC_ERROR_CODE_KEY } from '@trpc/server/rpc';
 import { OpenAPIV3 } from 'openapi-types';
-import { ZodIssue } from 'zod';
+import type { ZodIssue } from 'zod';
+
+// from @trpc/server/core/router
+export interface RouterDef<
+  TConfig extends AnyRootConfig,
+  TRecord extends ProcedureRouterRecord,
+  /**
+   * @deprecated
+   */
+  TOld = any,
+> {
+  _config: TConfig;
+  router: true;
+  procedures: TRecord;
+  record: TRecord;
+  /**
+   * V9 queries
+   * @deprecated
+   */
+  queries: any;
+  /**
+   * V9 mutations
+   * @deprecated
+   */
+  mutations: any;
+  /**
+   * V9 subscriptions
+   * @deprecated
+   */
+  subscriptions: any;
+}
 
 export type OpenApiMethod = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
 

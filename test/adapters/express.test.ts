@@ -5,9 +5,9 @@ import fetch from 'node-fetch';
 import { z } from 'zod';
 
 import {
-  CreateOpenApiExpressMiddlewareOptions,
-  OpenApiMeta,
-  OpenApiRouter,
+  type CreateOpenApiExpressMiddlewareOptions,
+  type OpenApiMeta,
+  type OpenApiRouter,
   createOpenApiExpressMiddleware,
 } from '../../src';
 

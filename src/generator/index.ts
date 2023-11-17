@@ -1,6 +1,6 @@
 import { OpenAPIV3 } from 'openapi-types';
 
-import { OpenApiRouter } from '../types';
+import type { OpenApiRouter } from '../types';
 import { getOpenApiPathsObject } from './paths';
 import { errorResponseObject } from './schema';
 

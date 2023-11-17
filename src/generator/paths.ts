@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server';
 import { OpenAPIV3 } from 'openapi-types';
 
-import { OpenApiProcedureRecord, OpenApiRouter } from '../types';
+import type { OpenApiProcedureRecord, OpenApiRouter } from '../types';
 import { acceptsRequestBody } from '../utils/method';
 import { getPathParameters, normalizePath } from '../utils/path';
 import { forEachOpenApiProcedure, getInputOutputParsers } from '../utils/procedure';
@@ -94,7 +94,11 @@ export const getOpenApiPathsObject = (
                   ) || []),
                 ],
               }),
-          responses: getResponsesObject(outputParser, openapi.example?.response, openapi.responseHeaders),
+          responses: getResponsesObject(
+            outputParser,
+            openapi.example?.response,
+            openapi.responseHeaders,
+          ),
           ...(openapi.deprecated ? { deprecated: openapi.deprecated } : {}),
         },
       };
